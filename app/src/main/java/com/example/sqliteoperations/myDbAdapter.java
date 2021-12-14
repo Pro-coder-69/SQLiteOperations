@@ -24,6 +24,20 @@ public class myDbAdapter {
         return id;
     }
 
+    public boolean verifyEntry(String dbfield, String fieldValue) {
+        SQLiteDatabase dbb = myhelper.getWritableDatabase();
+        String Query = "Select * from " + myDbHelper.TABLE_NAME + " where " + dbfield + " = " + fieldValue;
+        Cursor cursor = dbb.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
+    }
+
+
+
     public String getData()
     {
         SQLiteDatabase db = myhelper.getWritableDatabase();

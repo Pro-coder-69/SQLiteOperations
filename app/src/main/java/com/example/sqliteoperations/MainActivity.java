@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-    EditText Name, Pass , updateold, updatenew, delete;
+    EditText Name, Pass , updateold, updatenew, delete, loginName, loginPass;
     myDbAdapter helper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,8 +15,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Name= (EditText) findViewById(R.id.editName);
         Pass= (EditText) findViewById(R.id.editPass);
-        updateold= (EditText) findViewById(R.id.editText3);
-        updatenew= (EditText) findViewById(R.id.editText5);
+        loginName= (EditText) findViewById(R.id.loginName);
+        loginPass= (EditText) findViewById(R.id.loginPass);
+        //updateold= (EditText) findViewById(R.id.editText3);
+        //updatenew= (EditText) findViewById(R.id.editText5);
         delete = (EditText) findViewById(R.id.editText6);
 
         helper = new myDbAdapter(this);
@@ -42,6 +44,34 @@ public class MainActivity extends AppCompatActivity {
                 Message.message(getApplicationContext(),"Insertion Successful");
                 Name.setText("");
                 Pass.setText("");
+            }
+        }
+    }
+
+    public void loginUser(View view)
+    {
+        String t1 = loginName.getText().toString();
+        String t2 = loginPass.getText().toString();
+        if(t1.isEmpty() || t2.isEmpty())
+        {
+            Message.message(getApplicationContext(),"Enter Both Name and Password");
+        }
+        else
+        {
+
+
+
+            long id = helper.insertData(t1,t2);
+            if(id<=0)
+            {
+                Message.message(getApplicationContext(),"Insertion Unsuccessful");
+                loginName.setText("");
+                loginPass.setText("");
+            } else
+            {
+                Message.message(getApplicationContext(),"Insertion Successful");
+                loginName.setText("");
+                loginPass.setText("");
             }
         }
     }
