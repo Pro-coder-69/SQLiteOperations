@@ -7,7 +7,11 @@ import android.view.View;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
+<<<<<<< Updated upstream
     EditText Name, Pass , updateold, updatenew, delete, loginName, loginPass;
+=======
+    EditText Name, Pass , Contact /*updateold, updatenew, delete*/;
+>>>>>>> Stashed changes
     myDbAdapter helper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,11 +19,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Name= (EditText) findViewById(R.id.editName);
         Pass= (EditText) findViewById(R.id.editPass);
+<<<<<<< Updated upstream
         loginName= (EditText) findViewById(R.id.loginName);
         loginPass= (EditText) findViewById(R.id.loginPass);
         //updateold= (EditText) findViewById(R.id.editText3);
         //updatenew= (EditText) findViewById(R.id.editText5);
         delete = (EditText) findViewById(R.id.editText6);
+=======
+        /*Contact= (EditText) findViewById(R.id.editContact);*/
+        /*updateold= (EditText) findViewById(R.id.editText3);
+        updatenew= (EditText) findViewById(R.id.editText5);
+        delete = (EditText) findViewById(R.id.editText6);*/
+>>>>>>> Stashed changes
 
         helper = new myDbAdapter(this);
     }
@@ -27,23 +38,26 @@ public class MainActivity extends AppCompatActivity {
     {
         String t1 = Name.getText().toString();
         String t2 = Pass.getText().toString();
-        if(t1.isEmpty() || t2.isEmpty())
+        String t3 = Contact.getText().toString();
+        if(t1.isEmpty() || t2.isEmpty() || t3.isEmpty())
         {
             Message.message(getApplicationContext(),"Enter Both Name and Password");
         }
         else
         {
-            long id = helper.insertData(t1,t2);
+            long id = helper.insertData(t1,t2,t3);
             if(id<=0)
             {
                 Message.message(getApplicationContext(),"Insertion Unsuccessful");
                 Name.setText("");
                 Pass.setText("");
+                Contact.setText("");
             } else
             {
                 Message.message(getApplicationContext(),"Insertion Successful");
                 Name.setText("");
                 Pass.setText("");
+                Contact.setText("");
             }
         }
     }
@@ -82,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         Message.message(this,data);
     }
 
-    public void update( View view)
+    /*public void update( View view)
     {
         String u1 = updateold.getText().toString();
         String u2 = updatenew.getText().toString();
@@ -105,8 +119,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-    }
-    public void delete( View view)
+    }*/
+    /*public void delete( View view)
     {
         String uname = delete.getText().toString();
         if(uname.isEmpty())
@@ -126,5 +140,8 @@ public class MainActivity extends AppCompatActivity {
                 delete.setText("");
             }
         }
-    }
+
+    public boolean authenticate(String name){
+
+    }*/
 }

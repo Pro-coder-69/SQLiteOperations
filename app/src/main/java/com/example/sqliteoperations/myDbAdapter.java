@@ -14,12 +14,13 @@ public class myDbAdapter {
         myhelper = new myDbHelper(context);
     }
 
-    public long insertData(String name, String pass)
+    public long insertData(String name, String pass, String contactinfo)
     {
         SQLiteDatabase dbb = myhelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(myDbHelper.NAME, name);
         contentValues.put(myDbHelper.MyPASSWORD, pass);
+        contentValues.put(myDbHelper.MyCONTACT, contactinfo);
         long id = dbb.insert(myDbHelper.TABLE_NAME, null , contentValues);
         return id;
     }
@@ -66,6 +67,7 @@ public class myDbAdapter {
     public int updateName(String oldName , String newName)
     {
         SQLiteDatabase db = myhelper.getWritableDatabase();
+        SQLiteDatabase db2 = myhelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(myDbHelper.NAME,newName);
         String[] whereArgs= {oldName};
@@ -81,10 +83,23 @@ public class myDbAdapter {
         private static final String UID="_id";     // Column I (Primary Key)
         private static final String NAME = "Name";    //Column II
         private static final String MyPASSWORD= "Password";    // Column III
+        private static final String MyCONTACT= "Contact_info";
         private static final String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+
-                " ("+UID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+NAME+" VARCHAR(255) ,"+ MyPASSWORD+" VARCHAR(225));";
+                " ("+UID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+NAME+" VARCHAR(255) ,"+ MyPASSWORD+" VARCHAR(225))"+MyCONTACT+" VARCHAR(225));";
+        private static final String TABLE_NAME2 = "myTable2";   // Table Name
+        private static final String DROP_TABLE2 ="DROP TABLE IF EXISTS "+TABLE_NAME2;
+        private static final String DATABASE_NAME2 = "myDatabase2";    // Database Name
+
+        private static final int DATABASE_Version2 = 1;    // Database Version
+        private static final String UserID="_id";     // Column I (Primary Key)
+        private static final String Item_Name = "Item_Name";    //Column II
+        private static final String Item_Desc= "Item_Description";    // Column III
+        private static final String Item_Image_url= "Image";
+        private static final String CREATE_TABLE2 = "CREATE TABLE "+TABLE_NAME2+
+                " ("+UserID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+Item_Name+" VARCHAR(255) ,"+ Item_Desc+" VARCHAR(225))"+Item_Image_url+" VARCHAR(225));";
         private static final String DROP_TABLE ="DROP TABLE IF EXISTS "+TABLE_NAME;
         private Context context;
+
 
         public myDbHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_Version);
