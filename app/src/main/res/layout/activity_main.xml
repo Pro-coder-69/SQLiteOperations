@@ -222,4 +222,20 @@
         android:textAllCaps="false"
         android:textSize="18sp"
         android:textStyle="normal|bold" />
+
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editPass"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="175dp"
+        android:layout_marginLeft="175dp"
+        android:layout_marginTop="254dp"
+        android:onClick="addUser"
+        android:text="@string/login"
+        android:textSize="18sp"
+        android:textStyle="bold|italic" />
 </RelativeLayout>

@@ -2,13 +2,18 @@ package com.example.sqliteoperations;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
     EditText Name, Pass , updateold, updatenew, delete, loginName, loginPass;
     myDbAdapter helper;
+    private Button loginbutton;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +27,16 @@ public class MainActivity extends AppCompatActivity {
         delete = (EditText) findViewById(R.id.editText6);
 
         helper = new myDbAdapter(this);
+
+
+        loginbutton = (Button) findViewById(R.id.login_button);
+        loginbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerHost();
+            }
+        });
+
     }
     public void addUser(View view)
     {
@@ -127,4 +142,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+
+    public void recyclerHost() {
+        Intent intent = new Intent(this, Recycler.class);
+        startActivity(intent);
+    }
+
 }
