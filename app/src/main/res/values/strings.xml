@@ -4,7 +4,8 @@
     <string name="password">password</string>
     <string name="add_user">sign up</string>
     <string name="view_data">view data</string>
-    <string name="update">update</string>
+    <string name="update">update username</string>
     <string name="delete">delete</string>
+    <string name="login">login</string>
 
-    </resources>
+</resources>

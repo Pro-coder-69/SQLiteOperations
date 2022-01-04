@@ -2,9 +2,11 @@ package com.example.sqliteoperations;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.preference.PreferenceManager;
 
 
 public class myDbAdapter {
@@ -24,16 +26,20 @@ public class myDbAdapter {
         return id;
     }
 
-    public boolean verifyEntry(String dbfield, String fieldValue) {
-        SQLiteDatabase dbb = myhelper.getWritableDatabase();
-        String Query = "Select * from " + myDbHelper.TABLE_NAME + " where " + dbfield + " = " + fieldValue;
-        Cursor cursor = dbb.rawQuery(Query, null);
-        if(cursor.getCount() <= 0){
-            cursor.close();
-            return false;
+    public boolean verifyEntry(String inUser, String inPass) {
+        SQLiteDatabase db = myhelper.getWritableDatabase();
+        String[] columns = {myDbHelper.UID, myDbHelper.NAME, myDbHelper.MyPASSWORD};
+        Cursor cursor = db.query(myDbHelper.TABLE_NAME, columns, null, null, null, null, null);
+        StringBuffer buffer = new StringBuffer();
+        while (cursor.moveToNext()) {
+            int cid = cursor.getInt(cursor.getColumnIndex(myDbHelper.UID));
+            String name = cursor.getString(cursor.getColumnIndex(myDbHelper.NAME));
+            String password = cursor.getString(cursor.getColumnIndex(myDbHelper.MyPASSWORD));
+            if (inUser.equals(name)&&(inPass.equals(password))){
+                return true;
+            }
         }
-        cursor.close();
-        return true;
+        return false;
     }
 
 
@@ -63,7 +69,7 @@ public class myDbAdapter {
         return  count;
     }
 
-    public int updateName(String oldName , String newName)
+    public int updateName(String oldName, String newName)
     {
         SQLiteDatabase db = myhelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -85,6 +91,7 @@ public class myDbAdapter {
                 " ("+UID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+NAME+" VARCHAR(255) ,"+ MyPASSWORD+" VARCHAR(225));";
         private static final String DROP_TABLE ="DROP TABLE IF EXISTS "+TABLE_NAME;
         private Context context;
+        static String current_user_ID;
 
         public myDbHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_Version);

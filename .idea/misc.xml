@@ -4,6 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Joe Shmo/AndroidStudioProjects/SQLiteOperations/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/Joe Shmo/AndroidStudioProjects/SQLiteOperations/app/src/main/res/layout/activity_recycler.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/gradient.xml" value="0.1953125" />
+        <entry key="app/src/main/res/layout/activity_account_page.xml" value="0.20677083333333332" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1595744680851064" />
       </map>
     </option>
   </component>
