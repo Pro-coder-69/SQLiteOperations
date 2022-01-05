@@ -20,6 +20,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/viewmarketbutton"
+        android:layout_width="131dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="200dp"
+        android:onClick="mainReyclerActivity"
+        android:text="view market"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/viewdatabutton"
         android:layout_width="135dp"
         android:layout_height="50dp"

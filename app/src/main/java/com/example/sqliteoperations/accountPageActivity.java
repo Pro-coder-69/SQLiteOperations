@@ -52,4 +52,9 @@ public class accountPageActivity extends AppCompatActivity {
         Message.message(this,data);
     }
 
+    public void mainReyclerActivity(View view) {
+        Intent intent = new Intent(this, MainRecyclerActivity.class);
+        startActivity(intent);
+    }
+
 }
