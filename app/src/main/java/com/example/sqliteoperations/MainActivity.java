@@ -122,11 +122,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void recyclerHost() {
+   /* public void recyclerHost() {
         Intent intent = new Intent(this, Recycler.class);
         startActivity(intent);
-    }
-
-
+    }*/
 
 }

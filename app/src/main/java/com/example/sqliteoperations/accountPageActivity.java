@@ -57,4 +57,9 @@ public class accountPageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void uploadItem(View view) {
+        Intent intent = new Intent(this, uploadItem.class);
+        startActivity(intent);
+    }
+
 }
