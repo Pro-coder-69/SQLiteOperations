@@ -13,7 +13,7 @@
         android:layout_height="64dp"
         android:layout_marginStart="156dp"
         android:layout_marginTop="80dp"
-        android:onClick="uploadItem"
+        android:onClick="uploadItemMethod"
         android:text="upload item"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"

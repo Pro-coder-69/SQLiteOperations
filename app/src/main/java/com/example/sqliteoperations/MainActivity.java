@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-//v1.1
+//v1.2
 public class MainActivity extends AppCompatActivity {
     public static final String USER_KEY = "USER_KEY";
     public static final String PASS_KEY = "PASS_KEY";
