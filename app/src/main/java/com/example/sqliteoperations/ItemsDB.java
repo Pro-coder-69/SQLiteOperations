@@ -19,7 +19,7 @@ public class ItemsDB {
         Item = new ItemHelper(context);
     }
 
-    public long insertData(String name, String desc, String payment, String pic)
+    public long insertData(String name, String desc, String payment, byte[] pic)
     {
         SQLiteDatabase dbb = Item.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -47,8 +47,20 @@ public class ItemsDB {
             entry[0] = cursor.getString(cursor.getColumnIndex(ItemHelper.NAME));
             entry[1] =cursor.getString(cursor.getColumnIndex(ItemHelper.DESC));
             entry[2] = cursor.getString(cursor.getColumnIndex(ItemHelper.PAYMENT));
-            entry[3] =cursor.getString(cursor.getColumnIndex(ItemHelper.URL));
             buffer.add(entry);
+        }
+        return buffer;
+    }
+    public ArrayList<byte[]> getMaps()
+    {
+        SQLiteDatabase db = Item.getWritableDatabase();
+        String[] columns = {ItemHelper.UID,ItemHelper.NAME,ItemHelper.DESC, ItemHelper.PAYMENT, ItemHelper.URL};
+        Cursor cursor =db.query(ItemHelper.TABLE_NAME,columns,null,null,null,null,null);
+        ArrayList<byte[]> buffer= new ArrayList<byte[]>();
+        while (cursor.moveToNext())
+        {
+            int cid =cursor.getInt(cursor.getColumnIndex(ItemHelper.UID));
+            buffer.add(cursor.getBlob(cursor.getColumnIndex(ItemHelper.URL)));
         }
         return buffer;
     }

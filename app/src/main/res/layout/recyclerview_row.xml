@@ -10,12 +10,12 @@
 
     <ImageView
         android:id="@+id/img_item"
-        android:layout_width="147dp"
-        android:layout_height="110dp"
-        android:layout_gravity="right
-"
-        android:contentDescription="@string/app_name"
-        android:scaleType="center" />
+        android:layout_width="76dp"
+        android:layout_height="62dp"
+        android:layout_gravity="right"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name" />
 
     <TextView
         android:id="@+id/tvAnimalName"

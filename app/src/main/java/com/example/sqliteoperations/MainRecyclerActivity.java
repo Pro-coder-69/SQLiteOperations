@@ -30,12 +30,13 @@ public class MainRecyclerActivity extends AppCompatActivity implements MyRecycle
         ArrayList<edensobject> edens = new ArrayList<>();
         //helper.insertData("xx","xx","xx", "https://pbs.twimg.com/profile_images/949787136030539782/LnRrYf6e_400x400.jpg");
         ArrayList<String[]> data = helper.getData();
+        ArrayList<byte[]> byted = helper.getMaps();
         for (int x=0;x< data.size();x++){
             edensobject edob=new edensobject();
             edob.setNames(data.get(x)[0]);
             edob.setDesc(data.get(x)[1]);
             edob.setPay(data.get(x)[2]);
-            edob.setImage(data.get(x)[3]);
+            edob.setImage(byted.get(x));
             edens.add(edob);
         }
 

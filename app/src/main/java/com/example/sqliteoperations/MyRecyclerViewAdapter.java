@@ -1,6 +1,9 @@
 package com.example.sqliteoperations;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +13,9 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
@@ -17,6 +23,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private List<edensobject> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
+    private Drawable d;
 
     // data is passed into the constructor
     MyRecyclerViewAdapter(Context context, List<edensobject> data) {
@@ -36,7 +43,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(ViewHolder holder, int position) {
         edensobject obj = mData.get(position);
         holder.myTextView.setText(obj.getNames());
-        holder.myImageView.setImageDrawable(obj.getMap());
+        holder.myImageView.setImageDrawable(obj.getImage());
+
         Log.d("check", "check");
     }
 

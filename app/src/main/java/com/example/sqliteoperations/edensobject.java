@@ -1,18 +1,23 @@
 package com.example.sqliteoperations;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.net.URL;
 
 public class edensobject {
-    private String image;
+    private byte[] image;
     private String name, desc, pay;
 
-    public String getImage() {
-        return image;
+    public Drawable getImage() {
+        byte[] b = image;
+        ByteArrayInputStream is = new ByteArrayInputStream(b);
+        Drawable drw = Drawable.createFromStream(is, "articleImage");
+        return drw;
     }
 
     public String getNames(){
@@ -27,7 +32,7 @@ public class edensobject {
         return pay;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 
@@ -43,16 +48,4 @@ public class edensobject {
         this.pay = pay;
     }
 
-    public Drawable getMap(){
-        try {
-            InputStream is = (InputStream) new URL(image).getContent();
-            Drawable d = Drawable.createFromStream(is, "src name");
-            Log.d("check", "check");
-            return d;
-        } catch (Exception e) {
-            Log.d("check", "error");
-            return null;
-
-        }
-    }
 }
