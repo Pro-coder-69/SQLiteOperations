@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SQLiteOperations">
         <activity
+            android:name=".displayListing"
+            android:exported="true" />
+        <activity
             android:name=".uploadItem"
             android:exported="true" />
         <activity

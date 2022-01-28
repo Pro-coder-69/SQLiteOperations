@@ -19,7 +19,7 @@ public class ItemsDB {
         Item = new ItemHelper(context);
     }
 
-    public long insertData(String name, String desc, String payment, byte[] pic)
+    public long insertData(String name, String desc, String payment, String pic)
     {
         SQLiteDatabase dbb = Item.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -64,7 +64,6 @@ public class ItemsDB {
         }
         return buffer;
     }
-
     public  int delete(String uname)
     {
         SQLiteDatabase db = Item.getWritableDatabase();

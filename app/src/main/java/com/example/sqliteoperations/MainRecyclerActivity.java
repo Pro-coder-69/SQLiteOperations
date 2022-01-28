@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -65,5 +66,12 @@ public class MainRecyclerActivity extends AppCompatActivity implements MyRecycle
     @Override
     public void onItemClick(View view, int position) {
         Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        displayListing(position);
+    }
+
+    public void displayListing(int x) {
+        Intent intent = new Intent(this, displayListing.class);
+        intent.putExtra("position",x);
+        startActivity(intent);
     }
 }

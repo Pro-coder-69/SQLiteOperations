@@ -10,11 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-//v2.0
+//v2.1
 public class MainActivity extends AppCompatActivity {
     public static final String USER_KEY = "USER_KEY";
     public static final String PASS_KEY = "PASS_KEY";
-    SharedPreferences sharedpreferences;
     EditText Name, Pass , delete, loginName, loginPass;
     private myDbAdapter helper;
     private Button loginbutton;
